@@ -65,9 +65,7 @@ app.post('/getPet', function (req, res) {
 app.post('/updatePet', function (req, res) {
     console.log('upating pet in server')
     Pet.find({name: req.body.name}, function(err, pet) {
-        console.log('pet', pet[0]._id)
-        console.log('req', req.body._id)
-        if (pet.length > 0 && pet[0]._id != req.body._id) {
+        if (pet.length > 0) {
             res.json({err: "error"})
         } else {
             Pet.update({_id: req.body._id}, {
