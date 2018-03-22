@@ -1,0 +1,36 @@
+<h3>Know of a pet needing a home?</h3>
+<form (submit)="addThroughService()">
+    <label for="newPet.name">Pet Name: <br>
+        <input type="text" name="newPet.name" id="newPet-name" [(ngModel)]="newPet.name" required minlength="3"
+            #name="ngModel"><p *ngIf="errorMsg">{{errorMsg}}</p>
+    </label>
+    <br>
+    <p style="color:red" *ngIf="name.errors && name.errors.minlength">Type needs to be longer</p>
+    <label for="newPet.type">Pet Type: <br>
+        <input type="text" name="newPet.type" id="newPet-type" [(ngModel)]="newPet.type" required minlength="3"
+            #type="ngModel">
+    </label>
+    <br>
+    <p style="color:red" *ngIf="type.errors && type.errors.minlength">Last Name needs to be longer</p>
+    <label for="newPet.description">Pet Description: <br>
+        <input type="description" name="newPet.description" id="newPet-description" [(ngModel)]="newPet.description" required minlength="3" #description="ngModel">
+    </label>
+    <br>
+    <div style="color:red" *ngIf="description.errors && description.errors.minlength">Description needs to be longer</div>
+    <label for="newPet.skills">Pet Skills: <br>
+        <ul>
+            <label for="skills[0]">Skill 1:
+                <input type="skills[0]" name="newPet.skills[0]" id="newPet-skills[0]" [(ngModel)]="newPet.skills[0]" #skills[0]="ngModel">
+            </label><br>
+            <label for="skills[1]">Skill 2:
+                <input type="skills[1]" name="newPet.skills[1]" id="newPet-skills[1]" [(ngModel)]="newPet.skills[1]" #skills[1]="ngModel">
+            </label><br>
+            <label for="skills[2]">Skill 3:
+                <input type="skills[2]" name="newPet.skills[2]" id="newPet-skills[2]" [(ngModel)]="newPet.skills[2]" #skills[2]="ngModel">
+            </label><br>
+        </ul>
+    </label>
+    <br>
+    <input *ngIf="name.valid && type.valid && description.valid" type="submit" value="Add Pet" id="newPet-btn">
+</form>
+<button [routerLink]="['/dashboard']">Cancel</button>

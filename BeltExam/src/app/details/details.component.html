@@ -1,0 +1,23 @@
+<a [routerLink]="['/dashboard']">Home</a>
+
+<h3>Details about {{pet.name}}</h3>
+<table>
+    <tr>
+        <td><strong>Pet type:</strong></td>
+        <td>{{pet.type}}</td>
+    </tr>
+    <tr>
+        <td><strong>Description:</strong></td>
+        <td>{{pet.description}}</td>
+    </tr>
+    <tr>
+        <td><strong>Skill:</strong></td>
+        <td>{{pet.skills}}</td>
+    </tr>
+    <tr>
+        <td><strong>Pet Likes:</strong></td>
+        <td>{{pet.likes}}</td>
+    </tr>
+</table>
+<button *ngIf="!liked" (click)="likePetThroughService()">Like this pet</button>
+<button (click)="deletePetThroughService()">Adopt this pet</button>

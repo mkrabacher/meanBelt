@@ -1,0 +1,43 @@
+<h3>Edit this pet</h3>
+<form (submit)="updateThroughService()">
+    <label for="editPet.name">Pet Name:
+        <br>
+        <input type="text" name="editPet.name" id="editPet-name" [(ngModel)]="editPet.name" required minlength="3" #name="ngModel">
+        <p *ngIf="errorMsg">{{errorMsg}}</p>
+    </label>
+    <br>
+    <p style="color:red" *ngIf="name.errors && name.errors.minlength">Type needs to be longer</p>
+    <label for="editPet.type">Pet Type:
+        <br>
+        <input type="text" name="editPet.type" id="editPet-type" [(ngModel)]="editPet.type" required minlength="3" #type="ngModel">
+    </label>
+    <br>
+    <p style="color:red" *ngIf="type.errors && type.errors.minlength">Last Name needs to be longer</p>
+    <label for="editPet.description">Pet Description:
+        <br>
+        <input type="description" name="editPet.description" id="editPet-description" [(ngModel)]="editPet.description" required minlength="3"
+            #description="ngModel">
+    </label>
+    <br>
+    <div style="color:red" *ngIf="description.errors && description.errors.minlength">Description needs to be longer</div>
+    <label for="editPet.skills">Pet Skills:
+        <br>
+        <ul>
+            <label for="skills[0]">Skill 1:
+                <input type="skills[0]" name="editPet.skills[0]" id="editPet-skills[0]" [(ngModel)]="editPet.skills[0]" #skills[0]="ngModel">
+            </label>
+            <br>
+            <label for="skills[1]">Skill 2:
+                <input type="skills[1]" name="editPet.skills[1]" id="editPet-skills[1]" [(ngModel)]="editPet.skills[1]" #skills[1]="ngModel">
+            </label>
+            <br>
+            <label for="skills[2]">Skill 3:
+                <input type="skills[2]" name="editPet.skills[2]" id="editPet-skills[2]" [(ngModel)]="editPet.skills[2]" #skills[2]="ngModel">
+            </label>
+            <br>
+        </ul>
+    </label>
+    <br>
+    <input *ngIf="name.valid && type.valid && description.valid" type="submit" value="Edit Pet" id="editPet-btn">
+</form>
+<button [routerLink]="['/dashboard']">Cancel</button>
